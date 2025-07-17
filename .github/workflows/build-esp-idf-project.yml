@@ -53,6 +53,7 @@ jobs:
         run: |
           python3 -v
           python3 fetch_repos.py
+          sed -i 's/esp_ble_gap_ext_adv_reprot_t/esp_ble_gap_ext_adv_report_t/g' platforms/regina/components/arduino_lite/libraries/BLE/src/BLEAdvertisedDevice.h
 
       - name: 🛠️ Build ESP-IDF project
         uses: espressif/esp-idf-ci-action@v1
