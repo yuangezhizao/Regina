@@ -8,9 +8,10 @@ on:
 
 env:
   ESP_IDF_TARGET: ESP32C6
-  ARTIFACT_BOOTLOADER_BIN_PATH: build/bootloader/bootloader.bin
-  ARTIFACT_PARTITION_TABLE_BIN_PATH: build/partition_table/partition-table.bin
-  ARTIFACT_APP_BIN_PATH: build/regina.bin
+  ARTIFACT_BUILD_PATH: platforms/regina
+  ARTIFACT_BOOTLOADER_BIN_PATH: platforms/regina/build/bootloader/bootloader.bin
+  ARTIFACT_PARTITION_TABLE_BIN_PATH: platforms/regina/build/partition_table/partition-table.bin
+  ARTIFACT_APP_BIN_PATH: platforms/regina/build/regina.bin
 
 jobs:
   build:
@@ -51,7 +52,7 @@ jobs:
 
       - name: 📥 Fetch dependencies
         run: |
-          python3 -v
+          python3 -V
           python3 fetch_repos.py
           sed -i 's/esp_ble_gap_ext_adv_reprot_t/esp_ble_gap_ext_adv_report_t/g' platforms/regina/components/arduino_lite/libraries/BLE/src/BLEAdvertisedDevice.h
 
@@ -60,14 +61,14 @@ jobs:
         with:
           esp_idf_version: ${{ matrix.esp_idf_version }}
           target: ${{ env.ESP_IDF_TARGET }}
-          path: "platforms/regina"
+          path: ${{ env.ARTIFACT_BUILD_PATH }}
 
       - name: 📏 Show size by idf.py
         uses: espressif/esp-idf-ci-action@v1
         with:
           esp_idf_version: ${{ matrix.esp_idf_version }}
           target: ${{ env.ESP_IDF_TARGET }}
-          path: "platforms/regina"
+          path: ${{ env.ARTIFACT_BUILD_PATH }}
           command: |
             idf.py size
             idf.py size-components
@@ -78,18 +79,17 @@ jobs:
         with:
           esp_idf_version: ${{ matrix.esp_idf_version }}
           target: ${{ env.ESP_IDF_TARGET }}
-          path: "platforms/regina"
+          # path: ${{ env.ARTIFACT_BUILD_PATH }}
           command: |
             esptool.py image_info ${{ env.ARTIFACT_BOOTLOADER_BIN_PATH }} --version 2
             echo -e
             esptool.py image_info ${{ env.ARTIFACT_APP_BIN_PATH }} --version 2
 
-      # - name: 📦 Upload build artifacts (include binary images)
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: ${{ env.ESP_IDF_TARGET }}-build-artifacts_on-${{ matrix.os }}_with-esp-idf-${{ matrix.esp_idf_version }}
-      #     path: |
-      #       build
-      #       # ${{ env.ARTIFACT_BOOTLOADER_BIN_PATH }}
-      #       # ${{ env.ARTIFACT_PARTITION_TABLE_BIN_PATH }}
-      #       # ${{ env.ARTIFACT_APP_BIN_PATH }}
+      - name: 📦 Upload build artifacts (include binary images)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ESP_IDF_TARGET }}-build-artifacts_on-${{ matrix.os }}_with-esp-idf-${{ matrix.esp_idf_version }}
+          path: |
+            ${{ env.ARTIFACT_BOOTLOADER_BIN_PATH }}
+            ${{ env.ARTIFACT_PARTITION_TABLE_BIN_PATH }}
+            ${{ env.ARTIFACT_APP_BIN_PATH }}
