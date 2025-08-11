@@ -2,16 +2,16 @@
     {
         "url": "https://github.com/yuangezhizao/mooncake.git",
         "path": "dependencies/mooncake",
-        "branch": "main"
+        "branch": "v2.1.0"
     },
     {
         "url": "https://github.com/yuangezhizao/mooncake_log.git",
         "path": "dependencies/mooncake_log",
-        "branch": "main"
+        "branch": "v1.0.0"
     },
     {
         "url": "https://github.com/yuangezhizao/smooth_ui_toolkit.git",
         "path": "dependencies/smooth_ui_toolkit",
-        "branch": "main"
+        "branch": "v1.1.2"
     }
 ]

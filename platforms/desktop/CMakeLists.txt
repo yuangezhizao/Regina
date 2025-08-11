@@ -11,12 +11,12 @@ set(MOONCAKE_BUILD_EXAMPLE OFF)
 add_subdirectory(dependencies/mooncake)
 
 # Mooncake log
-set(MOONCAKE_EVENT_BUILD_EXAMPLE OFF)
+set(MOONCAKE_LOG_BUILD_EXAMPLE OFF)
 add_subdirectory(dependencies/mooncake_log)
 
-# Mooncake event
-set(MOONCAKE_EVENT_BUILD_EXAMPLE OFF)
-add_subdirectory(dependencies/mooncake_event)
+# Smooth ui shit
+set(SMOOTH_UI_TOOLKIT_BUILD_EXAMPLE OFF)
+add_subdirectory(dependencies/smooth_ui_toolkit)
 
 # App layer
 file(GLOB_RECURSE APP_LAYER_SRCS
@@ -29,7 +29,7 @@ set(APP_LAYER_INCS
 )
 add_library(app_layer ${APP_LAYER_SRCS})
 target_include_directories(app_layer PUBLIC ${APP_LAYER_INCS})
-target_link_libraries(app_layer PUBLIC mooncake mooncake_log mooncake_event)
+target_link_libraries(app_layer PUBLIC mooncake mooncake_log smooth_ui_toolkit)
 
 # 串口插件
 option(ENABLE_SERIAL_DESKTOP "Enable serial desktop" OFF)
