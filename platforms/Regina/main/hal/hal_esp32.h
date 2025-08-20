@@ -25,4 +25,5 @@ private:
     // 调驱动用
     void hal_test();
     void button_test();
+    void buzzer_test();
 };

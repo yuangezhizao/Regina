@@ -19,7 +19,8 @@
 void HalEsp32::hal_test()
 {
     /* ---------------------------------- Test ---------------------------------- */
-    button_test();
+    // button_test();
+    buzzer_test();
 }
 
 void HalEsp32::button_test()
@@ -35,5 +36,44 @@ void HalEsp32::button_test()
 
         delay(100);
         HAL::SysCtrl().feedTheDog();
+    }
+}
+
+void HalEsp32::buzzer_test()
+{
+    while (1)
+    {
+        mclog::info("is playing: {}", HAL::Buzzer().isPlaying());
+        HAL::Buzzer().playRtttlMusic("NokiaTun:d=4,o=5,b=225:8e6,8d6,f#,g#,8c#6,8b,d,e,8b,8a,c#,e,2a");
+
+        while (HAL::Buzzer().isPlaying())
+        {
+            mclog::info("is playing: {}", HAL::Buzzer().isPlaying());
+            HAL::SysCtrl().feedTheDog();
+            delay(1000);
+        }
+
+        // 打断测试
+        int interval = 2000;
+        while (interval >= 500)
+        {
+            HAL::Buzzer().playRtttlMusic("NokiaTun:d=4,o=5,b=225:8e6,8d6,f#,g#,8c#6,8b,d,e,8b,8a,c#,e,2a");
+
+            mclog::info("delay {}", interval);
+            delay(interval);
+            interval -= 500;
+            HAL::SysCtrl().feedTheDog();
+        }
+
+        interval = 500;
+        while (interval >= 20)
+        {
+            HAL::Buzzer().playRtttlMusic("NokiaTun:d=4,o=5,b=225:8e6,8d6,f#,g#,8c#6,8b,d,e,8b,8a,c#,e,2a");
+
+            mclog::info("delay {}", interval);
+            delay(interval);
+            interval -= 20;
+            HAL::SysCtrl().feedTheDog();
+        }
     }
 }

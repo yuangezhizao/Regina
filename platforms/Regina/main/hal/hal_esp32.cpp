@@ -12,6 +12,7 @@
 #include "hal_config.h"
 #include "components/system_ctrl/system_ctrl.h"
 #include "components/button/button.h"
+#include "components/buzzer/buzzer.h"
 
 #include <cstdint>
 #include <mooncake_log.h>
@@ -29,6 +30,9 @@ void HalEsp32::init()
     // 按钮
     _components.button = std::make_unique<ButtonArduino>();
     _components.button->init();
+
+    // 蜂鸣器
+    _components.buzzer = std::make_unique<BuzzerArduino>();
 
     hal_test();
 }
