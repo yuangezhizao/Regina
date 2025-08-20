@@ -9,4 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(EXTRA_COMPONENT_DIRS ../../dependencies)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+
+# idf_build_set_property(MINIMAL_BUILD ON)
+
 project(Regina)

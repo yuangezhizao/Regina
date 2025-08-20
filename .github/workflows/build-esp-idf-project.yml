@@ -24,7 +24,6 @@ jobs:
         os:
           - ubuntu-latest
         esp_idf_version:
-          - latest
           - release-v5.5
           - release-v5.4
           - release-v5.3
@@ -32,13 +31,7 @@ jobs:
           - false
         include:
           - os: ubuntu-latest
-            esp_idf_version: release-v5.2
-            experimental: true
-          - os: ubuntu-latest
-            esp_idf_version: release-v5.1
-            experimental: true
-          - os: ubuntu-latest
-            esp_idf_version: release-v5.0
+            esp_idf_version: latest
             experimental: true
 
     runs-on: ${{ matrix.os }}

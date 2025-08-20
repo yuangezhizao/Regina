@@ -15,13 +15,14 @@ file(GLOB_RECURSE MY_HAL_SRCS
 )
 
 idf_component_register(
-    SRCS 
-    ${APP_LAYER_SRCS} 
+    SRCS
+    ${APP_LAYER_SRCS}
     ${MY_HAL_SRCS}
     # "main.c"
-    "app_main.cpp"
+    # "app_main.cpp"
+    "main_hello_world.cpp"
 
     INCLUDE_DIRS
-    "." 
+    "."
     ${APP_LAYER_INCS}
 )
