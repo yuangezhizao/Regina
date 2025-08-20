@@ -10,44 +10,46 @@
  */
 #pragma once
 
-namespace hal_components {
-
-/**
- * @brief 编码器组件基类
- *
- */
-class EncoderBase {
-public:
-    ~EncoderBase() = default;
+namespace hal_components
+{
 
     /**
-     * @brief 更新编码器数据
+     * @brief 编码器组件基类
      *
      */
-    virtual void update() {}
-
-    /**
-     * @brief 获取计数值
-     *
-     */
-    virtual void getCount() {}
-
-    /**
-     * @brief 重置计数值
-     *
-     */
-    virtual void resetCount() {}
-
-    /**
-     * @brief 动了？
-     *
-     * @return true
-     * @return false
-     */
-    virtual bool wasMoved()
+    class EncoderBase
     {
-        return false;
-    }
-};
+    public:
+        ~EncoderBase() = default;
+
+        /**
+         * @brief 更新编码器数据
+         *
+         */
+        virtual void update() {}
+
+        /**
+         * @brief 获取计数值
+         *
+         */
+        virtual void getCount() {}
+
+        /**
+         * @brief 重置计数值
+         *
+         */
+        virtual void resetCount() {}
+
+        /**
+         * @brief 动了？
+         *
+         * @return true
+         * @return false
+         */
+        virtual bool wasMoved()
+        {
+            return false;
+        }
+    };
 
 } // namespace hal_components

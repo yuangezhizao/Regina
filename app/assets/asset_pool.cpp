@@ -10,7 +10,7 @@
  */
 #include "assets.h"
 
-void Asset::on_asset_pool_init(AssetPool_t& assetPool)
+void Asset::on_asset_pool_init(AssetPool_t &assetPool)
 {
     // 在这里初始化静态资源
     // std::memcpy...

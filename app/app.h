@@ -16,39 +16,40 @@
  * @brief 应用层
  *
  */
-namespace APP {
+namespace APP
+{
 
-// 依赖注入回调
-struct InitCallback_t {
-    std::function<void()> onAssetPoolInjection = nullptr;
-    std::function<void()> onHalInjection = nullptr;
-};
+    // 依赖注入回调
+    struct InitCallback_t
+    {
+        std::function<void()> onHalInjection = nullptr;
+    };
 
-/**
- * @brief 初始化应用层
- *
- * @param callback
- */
-void Init(InitCallback_t callback);
+    /**
+     * @brief 初始化应用层
+     *
+     * @param callback
+     */
+    void Init(InitCallback_t callback);
 
-/**
- * @brief 更新应用层
- *
- */
-void Update();
+    /**
+     * @brief 更新应用层
+     *
+     */
+    void Update();
 
-/**
- * @brief 结束力
- *
- * @return true
- * @return false
- */
-bool IsDone();
+    /**
+     * @brief 结束力
+     *
+     * @return true
+     * @return false
+     */
+    bool IsDone();
 
-/**
- * @brief 销毁应用层
- *
- */
-void Destroy();
+    /**
+     * @brief 销毁应用层
+     *
+     */
+    void Destroy();
 
 } // namespace APP

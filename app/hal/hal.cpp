@@ -9,6 +9,8 @@
  *
  */
 #include "hal.h"
+#include "hal/components/battery_monitor.h"
+#include "hal/components/button.h"
 #include <memory>
 #include <string>
 #include <mooncake_log.h>
@@ -21,9 +23,10 @@
 static std::unique_ptr<HAL::HalBase> _hal_instance;
 static const std::string _tag = "HAL";
 
-HAL::HalBase& HAL::Get()
+HAL::HalBase &HAL::Get()
 {
-    if (!_hal_instance) {
+    if (!_hal_instance)
+    {
         mclog::tagWarn(_tag, "getting null hal, auto inject base");
         _hal_instance = std::make_unique<HalBase>();
     }
@@ -32,7 +35,8 @@ HAL::HalBase& HAL::Get()
 
 void HAL::Inject(std::unique_ptr<HalBase> hal)
 {
-    if (!hal) {
+    if (!hal)
+    {
         mclog::tagError(_tag, "pass null hal");
         return;
     }
@@ -58,70 +62,84 @@ void HAL::Destroy()
 /* -------------------------------------------------------------------------- */
 /*                              Components Getter                             */
 /* -------------------------------------------------------------------------- */
-// 组件获取接口，如果当前没有实例，则懒加载一个基类，这样就算某个平台没有适配某个组件，也不会崩溃
+// 组件获取接口，如果当前没有实例，则懒加载一个基类，这样就算某个平台没有适配某个组件，也不会炸
 
-#if HAL_ENABLE_COMPONENT_SYSTEM_CONTROL
-hal_components::SystemControlBase& HAL::HalBase::SystemControl()
+hal_components::SystemControlBase &HAL::HalBase::SysCtrl()
 {
-    if (!_components.system_control) {
-        mclog::tagWarn(_tag, "getting null system config component");
+    if (!_components.system_control)
+    {
+        mclog::tagWarn(_tag, "getting null sys ctrl component");
         _components.system_control = std::make_unique<hal_components::SystemControlBase>();
     }
     return *_components.system_control.get();
 }
-#endif
 
-#if HAL_ENABLE_COMPONENT_IMU
-hal_components::ImuBase& HAL::HalBase::Imu()
+hal_components::ImuBase &HAL::HalBase::Imu()
 {
-    if (!_components.imu) {
+    if (!_components.imu)
+    {
         mclog::tagWarn(_tag, "getting null imu component");
         _components.imu = std::make_unique<hal_components::ImuBase>();
     }
     return *_components.imu.get();
 }
-#endif
 
-#if HAL_ENABLE_COMPONENT_SYSTEM_CONFIG
-hal_components::SystemConfigBase& HAL::HalBase::SystemConfig()
+hal_components::SystemConfigBase &HAL::HalBase::SysCfg()
 {
-    if (!_components.system_config) {
-        mclog::tagWarn(_tag, "getting null system config component");
+    if (!_components.system_config)
+    {
+        mclog::tagWarn(_tag, "getting null sys cfg component");
         _components.system_config = std::make_unique<hal_components::SystemConfigBase>();
     }
     return *_components.system_config.get();
 }
-#endif
 
-#if HAL_ENABLE_COMPONENT_BUZZER
-hal_components::BuzzerBase& HAL::HalBase::Buzzer()
+hal_components::BuzzerBase &HAL::HalBase::Buzzer()
 {
-    if (!_components.buzzer) {
+    if (!_components.buzzer)
+    {
         mclog::tagWarn(_tag, "getting null buzzer component");
         _components.buzzer = std::make_unique<hal_components::BuzzerBase>();
     }
     return *_components.buzzer.get();
 }
-#endif
 
-#if HAL_ENABLE_COMPONENT_TOUCHPAD
-hal_components::TouchpadBase& HAL::HalBase::Touchpad()
+hal_components::HapticEngineBase &HAL::HalBase::HapticEngine()
 {
-    if (!_components.touchpad) {
-        mclog::tagWarn(_tag, "getting null touchpad component");
-        _components.touchpad = std::make_unique<hal_components::TouchpadBase>();
+    if (!_components.haptic_engine)
+    {
+        mclog::tagWarn(_tag, "getting null haptic engine component");
+        _components.haptic_engine = std::make_unique<hal_components::HapticEngineBase>();
     }
-    return *_components.touchpad.get();
+    return *_components.haptic_engine.get();
 }
-#endif
 
-#if HAL_ENABLE_COMPONENT_ENCODER
-hal_components::EncoderBase& HAL::HalBase::Encoder()
+hal_components::BatteryMonitorBase &HAL::HalBase::BatteryMonitor()
 {
-    if (!_components.encoder) {
-        mclog::tagWarn(_tag, "getting null encoder component");
-        _components.encoder = std::make_unique<hal_components::EncoderBase>();
+    if (!_components.battery_monitor)
+    {
+        mclog::tagWarn(_tag, "getting null battery monitor component");
+        _components.battery_monitor = std::make_unique<hal_components::BatteryMonitorBase>();
     }
-    return *_components.encoder.get();
+    return *_components.battery_monitor.get();
 }
-#endif
+
+hal_components::ButtonBase &HAL::HalBase::Button()
+{
+    if (!_components.button)
+    {
+        mclog::tagWarn(_tag, "getting null button component");
+        _components.button = std::make_unique<hal_components::ButtonBase>();
+    }
+    return *_components.button.get();
+}
+
+hal_components::BleBase &HAL::HalBase::Ble()
+{
+    if (!_components.ble)
+    {
+        mclog::tagWarn(_tag, "getting null ble component");
+        _components.ble = std::make_unique<hal_components::BleBase>();
+    }
+    return *_components.ble.get();
+}

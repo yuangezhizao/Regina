@@ -10,50 +10,55 @@
  */
 #pragma once
 
-namespace hal_components {
-
-/**
- * @brief IMU 组件基类
- *
- */
-class ImuBase {
-public:
-    /**
-     * @brief IMU 数据
-     *
-     */
-    struct ImuData_t {
-        float accelX = 0.0;
-        float accelY = 0.0;
-        float accelZ = 0.0;
-        float gyroX = 0.0;
-        float gyroY = 0.0;
-        float gyroZ = 0.0;
-        float magX = 0.0;
-        float magY = 0.0;
-        float magZ = 0.0;
-    };
-
-    ~ImuBase() = default;
+namespace hal_components
+{
 
     /**
-     * @brief 更新 IMU 数据
+     * @brief IMU 组件基类
      *
      */
-    virtual void update() {}
-
-    /**
-     * @brief 获取 IMU 数据
-     *
-     * @return const ImuData_t&
-     */
-    const ImuData_t& getData()
+    class ImuBase
     {
-        return _imu_data;
-    }
+    public:
+        /**
+         * @brief IMU 数据
+         *
+         */
+        struct ImuData_t
+        {
+            float accelX = 0.0;
+            float accelY = 0.0;
+            float accelZ = 0.0;
+            float gyroX = 0.0;
+            float gyroY = 0.0;
+            float gyroZ = 0.0;
+            int steps = 0;
+        };
 
-protected:
-    ImuData_t _imu_data;
-};
+        ~ImuBase() = default;
+
+        virtual void init() {}
+
+        /**
+         * @brief 更新 IMU 数据
+         *
+         */
+        virtual void update() {}
+
+        /**
+         * @brief 获取 IMU 数据
+         *
+         * @return const ImuData_t&
+         */
+        const ImuData_t &getData()
+        {
+            return _imu_data;
+        }
+
+        virtual void resetSteps() {}
+
+    protected:
+        ImuData_t _imu_data;
+    };
 
 } // namespace hal_components

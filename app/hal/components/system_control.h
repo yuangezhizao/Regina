@@ -9,52 +9,66 @@
  *
  */
 #pragma once
+#include <cstddef>
 #include <cstdint>
 
-namespace hal_components {
-
-/**
- * @brief 系统操作组件基类
- *
- */
-class SystemControlBase {
-public:
-    ~SystemControlBase() = default;
+namespace hal_components
+{
 
     /**
-     * @brief 睡眠当前线程
+     * @brief 系统操作组件基类
      *
-     * @param ms
      */
-    virtual void delay(std::uint32_t ms) {}
-
-    /**
-     * @brief 获取当前系统运行毫秒数
-     *
-     * @return std::uint32_t
-     */
-    virtual std::uint32_t millis()
+    class SystemControlBase
     {
-        return 0;
-    }
+    public:
+        ~SystemControlBase() = default;
 
-    /**
-     * @brief 重启
-     *
-     */
-    virtual void reboot() {}
+        /**
+         * @brief 初始化
+         *
+         */
+        virtual void init() {}
 
-    /**
-     * @brief 关机
-     *
-     */
-    virtual void powerOff() {}
+        /**
+         * @brief 睡眠当前线程
+         *
+         * @param ms
+         */
+        virtual void delay(std::uint32_t ms) {}
 
-    /**
-     * @brief 重置系统看门狗
-     *
-     */
-    virtual void feedTheDog() {}
-};
+        /**
+         * @brief 获取当前系统运行毫秒数
+         *
+         * @return std::uint32_t
+         */
+        virtual std::uint32_t millis()
+        {
+            return 0;
+        }
+
+        /**
+         * @brief 重启
+         *
+         */
+        virtual void reboot() {}
+
+        /**
+         * @brief 关机
+         *
+         */
+        virtual void powerOff() {}
+
+        /**
+         * @brief 重置系统看门狗
+         *
+         */
+        virtual void feedTheDog() {}
+
+        virtual size_t freeHeapSize()
+        {
+            return 0;
+        }
+    };
 
 } // namespace hal_components

@@ -12,51 +12,55 @@
 #include <cstdint>
 #include <string>
 
-namespace hal_components {
-
-/**
- * @brief 蜂鸣器组件基类
- *
- */
-class BuzzerBase {
-public:
-    ~BuzzerBase() = default;
+namespace hal_components
+{
 
     /**
-     * @brief 开始哔哔
+     * @brief 蜂鸣器组件基类
      *
-     * @param frequency
-     * @param duration
      */
-    virtual void beep(float frequency, std::uint32_t duration = 0xFFFFFFFF) {}
-
-    /**
-     * @brief 是否在叫
-     *
-     * @return true
-     * @return false
-     */
-    virtual bool isBeeping()
+    class BuzzerBase
     {
-        return false;
-    }
+    public:
+        ~BuzzerBase() = default;
 
-    /**
-     * @brief 别叫了
-     *
-     */
-    virtual void stop() {}
+        virtual void init() {}
 
-    /**
-     * @brief 播放 RTTTL 音乐
-     *
-     * @param rtttlMusic
-     */
-    virtual void playRtttlMusic(const std::string& rtttlMusic) {}
-    // RTTTL 格式参考：
-    // https://en.wikipedia.org/wiki/Ring_Tone_Text_Transfer_Language
-    // https://adamonsoon.github.io/rtttl-play/
-    // https://picaxe.com/rtttl-ringtones-for-tune-command/
-};
+        /**
+         * @brief 开始哔哔
+         *
+         * @param frequency
+         * @param duration
+         */
+        virtual void beep(float frequency, std::uint32_t duration = 0xFFFFFFFF) {}
+
+        /**
+         * @brief 别叫了
+         *
+         */
+        virtual void stop() {}
+
+        /**
+         * @brief 播放 RTTTL 音乐
+         *
+         * @param rtttlMusic
+         */
+        virtual void playRtttlMusic(const std::string &rtttlMusic) {}
+        // RTTTL 格式参考：
+        // https://en.wikipedia.org/wiki/Ring_Tone_Text_Transfer_Language
+        // https://adamonsoon.github.io/rtttl-play/
+        // https://picaxe.com/rtttl-ringtones-for-tune-command/
+
+        /**
+         * @brief 是否在播放
+         *
+         * @return true
+         * @return false
+         */
+        virtual bool isPlaying()
+        {
+            return false;
+        }
+    };
 
 } // namespace hal_components
