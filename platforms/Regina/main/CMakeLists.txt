@@ -20,7 +20,8 @@ idf_component_register(
     ${MY_HAL_SRCS}
     # "main.c"
     # "app_main.cpp"
-    "main_hello_world.cpp"
+    # "main_hello_world.cpp"
+    "main_hw_cdc_hello_world.cpp"
 
     INCLUDE_DIRS
     "."
