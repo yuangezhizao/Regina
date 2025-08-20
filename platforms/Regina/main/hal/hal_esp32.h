@@ -11,15 +11,18 @@
 #pragma once
 #include <hal/hal.h>
 
-class HalEsp32 : public HAL::HalBase {
+class HalEsp32 : public HAL::HalBase
+{
 public:
     std::string type() override
     {
         return "ESP32";
     }
 
-    void init() override
-    {
-        // 创建组件实例等..
-    }
+    void init() override;
+
+private:
+    // 调驱动用
+    void hal_test();
+    void button_test();
 };

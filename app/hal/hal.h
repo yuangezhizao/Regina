@@ -147,21 +147,21 @@ namespace HAL
     {
         Get().Button().update();
     }
-    inline hal_components::Button_Class &BtnPower()
+    inline hal_components::Button_Class &BtnA()
     {
-        return Get().Button().BtnPower;
+        return Get().Button().BtnA;
     }
-    inline hal_components::Button_Class &BtnUp()
+    inline hal_components::Button_Class &BtnB()
     {
-        return Get().Button().BtnUp;
+        return Get().Button().BtnB;
     }
-    inline hal_components::Button_Class &BtnOk()
+    inline hal_components::Button_Class &BtnC()
     {
-        return Get().Button().BtnOk;
+        return Get().Button().BtnC;
     }
-    inline hal_components::Button_Class &BtnDown()
+    inline hal_components::Button_Class &BtnD()
     {
-        return Get().Button().BtnDown;
+        return Get().Button().BtnD;
     }
     inline hal_components::BleBase &Ble()
     {

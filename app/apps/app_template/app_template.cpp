@@ -38,19 +38,20 @@ void AppTemplate::onOpen()
 void AppTemplate::onRunning()
 {
     HAL::BtnUpdate();
-    if (HAL::BtnPower().wasClicked())
-    {
-        mclog::info("??");
-    }
-    if (HAL::BtnPower().wasDoubleClicked())
-    {
-        mclog::info("bye");
-        HAL::SysCtrl().powerOff();
-    }
-    if (HAL::BtnPower().wasHold())
-    {
-        mclog::info("jijiji");
-    }
+
+    // if (HAL::BtnPower().wasClicked())
+    // {
+    //     mclog::info("??");
+    // }
+    // if (HAL::BtnPower().wasDoubleClicked())
+    // {
+    //     mclog::info("bye");
+    //     HAL::SysCtrl().powerOff();
+    // }
+    // if (HAL::BtnPower().wasHold())
+    // {
+    //     mclog::info("jijiji");
+    // }
 }
 
 void AppTemplate::onClose()

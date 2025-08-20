@@ -16,10 +16,10 @@ namespace ButtonId
     enum ButtonId_t
     {
         None = 0,
-        Power,
-        Up,
-        Ok,
-        Down,
+        A,
+        B,
+        C,
+        D,
     };
 }
 
@@ -58,10 +58,10 @@ namespace hal_components
         }
 
         // 按键状态类实例，对应按键 ID
-        Button_Class BtnPower;
-        Button_Class BtnUp;
-        Button_Class BtnOk;
-        Button_Class BtnDown;
+        Button_Class BtnA;
+        Button_Class BtnB;
+        Button_Class BtnC;
+        Button_Class BtnD;
 
         /**
          * @brief 刷新按钮状态
@@ -69,10 +69,10 @@ namespace hal_components
          */
         inline void update()
         {
-            BtnPower.setRawState(millis(), getButton(ButtonId::Power));
-            BtnUp.setRawState(millis(), getButton(ButtonId::Up));
-            BtnOk.setRawState(millis(), getButton(ButtonId::Ok));
-            BtnDown.setRawState(millis(), getButton(ButtonId::Down));
+            BtnA.setRawState(millis(), getButton(ButtonId::A));
+            BtnB.setRawState(millis(), getButton(ButtonId::B));
+            BtnC.setRawState(millis(), getButton(ButtonId::C));
+            BtnD.setRawState(millis(), getButton(ButtonId::D));
         }
     };
 

@@ -19,10 +19,10 @@ idf_component_register(
     ${APP_LAYER_SRCS}
     ${MY_HAL_SRCS}
     # "main.c"
-    # "app_main.cpp"
+    "app_main.cpp"
     # "main_hello_world.cpp"
     # "main_hw_cdc_hello_world.cpp"
-    "main_GetChipID.cpp"
+    # "main_GetChipID.cpp"
 
     INCLUDE_DIRS
     "."
