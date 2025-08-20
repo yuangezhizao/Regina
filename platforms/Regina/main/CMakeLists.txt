@@ -21,7 +21,8 @@ idf_component_register(
     # "main.c"
     # "app_main.cpp"
     # "main_hello_world.cpp"
-    "main_hw_cdc_hello_world.cpp"
+    # "main_hw_cdc_hello_world.cpp"
+    "main_GetChipID.cpp"
 
     INCLUDE_DIRS
     "."
