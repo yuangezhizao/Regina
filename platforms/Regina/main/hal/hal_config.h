@@ -15,6 +15,11 @@
 #define HAL_PIN_IMU_I2C_BUS_SCL 10
 #define HAL_PIN_IMU_I2C_BUS_SDA 11
 
+// IMU
+#define HAL_IMU_DEVICE_ADDR 0x68
+#define HAL_PIN_IMU_INT1 23
+#define HAL_PIN_IMU_INT2 17
+
 // Button
 #define HAL_PIN_BTN_A 16
 #define HAL_PIN_BTN_B 3

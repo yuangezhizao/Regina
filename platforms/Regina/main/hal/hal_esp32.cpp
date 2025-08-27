@@ -11,6 +11,7 @@
 #include "hal_esp32.h"
 #include "hal_config.h"
 #include "components/system_ctrl/system_ctrl.h"
+#include "components/imu/imu.h"
 #include "components/button/button.h"
 #include "components/buzzer/buzzer.h"
 
@@ -30,6 +31,10 @@ void HalEsp32::init()
 
     // I2C
     i2c_init();
+
+    // IMU
+    _components.imu = std::make_unique<ImuBmi270>();
+    _components.imu->init();
 
     // 按钮
     _components.button = std::make_unique<ButtonArduino>();

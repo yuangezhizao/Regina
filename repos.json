@@ -1,17 +1,22 @@
 [
-    {
-        "url": "https://github.com/yuangezhizao/mooncake.git",
-        "path": "dependencies/mooncake",
-        "branch": "v2.1.0"
-    },
-    {
-        "url": "https://github.com/yuangezhizao/mooncake_log.git",
-        "path": "dependencies/mooncake_log",
-        "branch": "v1.0.0"
-    },
-    {
-        "url": "https://github.com/yuangezhizao/smooth_ui_toolkit.git",
-        "path": "dependencies/smooth_ui_toolkit",
-        "branch": "v1.1.2"
-    }
+  {
+    "url": "https://github.com/yuangezhizao/mooncake.git",
+    "path": "dependencies/mooncake",
+    "branch": "v2.1.0"
+  },
+  {
+    "url": "https://github.com/yuangezhizao/mooncake_log.git",
+    "path": "dependencies/mooncake_log",
+    "branch": "v1.0.0"
+  },
+  {
+    "url": "https://github.com/yuangezhizao/smooth_ui_toolkit.git",
+    "path": "dependencies/smooth_ui_toolkit",
+    "branch": "v1.1.2"
+  },
+  {
+    "url": "https://github.com/yuangezhizao/BMI270_SensorAPI.git",
+    "path": "platforms/Regina/main/hal/components/utils/BMI270-Sensor-API",
+    "branch": "master"
+  }
 ]

@@ -14,6 +14,9 @@ file(GLOB_RECURSE MY_HAL_SRCS
     ./hal/*.cpp
 )
 
+# Exclude example folders from BMI270-Sensor-API, keep only root level source files
+list(FILTER MY_HAL_SRCS EXCLUDE REGEX ".*/BMI270-Sensor-API/.+/.*")
+
 idf_component_register(
     SRCS
     ${APP_LAYER_SRCS}

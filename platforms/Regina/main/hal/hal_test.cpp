@@ -19,8 +19,23 @@
 void HalEsp32::hal_test()
 {
     /* ---------------------------------- Test ---------------------------------- */
+    imu_test();
     // button_test();
-    buzzer_test();
+    // buzzer_test();
+}
+
+void HalEsp32::imu_test()
+{
+    while (1)
+    {
+        HAL::Imu().update();
+        mclog::info("{:0.2f}\t{:0.2f}\t{:0.2f}\t|\t{:0.2f}\t{:0.2f}\t{:0.2f}", HAL::Imu().getData().accelX,
+                    HAL::Imu().getData().accelY, HAL::Imu().getData().accelZ, HAL::Imu().getData().gyroX,
+                    HAL::Imu().getData().gyroY, HAL::Imu().getData().gyroZ);
+
+        delay(50);
+        HAL::SysCtrl().feedTheDog();
+    }
 }
 
 void HalEsp32::button_test()
