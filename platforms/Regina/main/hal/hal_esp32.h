@@ -22,6 +22,8 @@ public:
     void init() override;
 
 private:
+    void i2c_init();
+
     // 调驱动用
     void hal_test();
     void button_test();

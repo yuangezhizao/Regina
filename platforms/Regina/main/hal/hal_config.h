@@ -10,6 +10,11 @@
  */
 #pragma once
 
+// I2C
+#define HAL_I2C_BUS_PORT_NUM I2C_NUM_0
+#define HAL_PIN_IMU_I2C_BUS_SCL 10
+#define HAL_PIN_IMU_I2C_BUS_SDA 11
+
 // Button
 #define HAL_PIN_BTN_A 16
 #define HAL_PIN_BTN_B 3
