@@ -15,6 +15,11 @@
 #include "components/button/button.h"
 #include "components/buzzer/buzzer.h"
 
+extern "C"
+{
+#include "components/utils/wear_levelling/wear_levelling.h"
+}
+
 #include <cstdint>
 #include <mooncake_log.h>
 #include <Arduino.h>
@@ -24,6 +29,9 @@
 void HalEsp32::init()
 {
     initArduino();
+
+    // 文件系统
+    fs_init();
 
     // 系统控制
     _components.system_control = std::make_unique<SystemControlArduino>();
@@ -98,4 +106,18 @@ void HalEsp32::i2c_init()
         }
     }
     mclog::tagInfo(tag, "found {} device", device_num);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                     FS                                     */
+/* -------------------------------------------------------------------------- */
+void HalEsp32::fs_init()
+{
+    const std::string tag = "fs";
+    mclog::tagInfo(tag, "init");
+
+    if (!wl_fs_init())
+    {
+        mclog::tagError(tag, "failed");
+    }
 }
