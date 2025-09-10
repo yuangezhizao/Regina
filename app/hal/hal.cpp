@@ -104,6 +104,16 @@ hal_components::BuzzerBase &HAL::HalBase::Buzzer()
     return *_components.buzzer.get();
 }
 
+hal_components::DisplayBase &HAL::HalBase::Display()
+{
+    if (!_components.display)
+    {
+        mclog::tagWarn(_tag, "getting null display component");
+        _components.display = std::make_unique<hal_components::DisplayBase>();
+    }
+    return *_components.display.get();
+}
+
 hal_components::HapticEngineBase &HAL::HalBase::HapticEngine()
 {
     if (!_components.haptic_engine)

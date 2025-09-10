@@ -15,6 +15,11 @@
     "branch": "v1.1.2"
   },
   {
+    "url": "https://github.com/yuangezhizao/LovyanGFX.git",
+    "path": "dependencies/LovyanGFX",
+    "branch": "dev"
+  },
+  {
     "url": "https://github.com/yuangezhizao/BMI270_SensorAPI.git",
     "path": "platforms/Regina/main/hal/components/utils/BMI270-Sensor-API",
     "branch": "master"

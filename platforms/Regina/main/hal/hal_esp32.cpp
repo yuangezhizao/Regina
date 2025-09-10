@@ -14,6 +14,8 @@
 #include "components/imu/imu.h"
 #include "components/button/button.h"
 #include "components/buzzer/buzzer.h"
+#include "components/display/display.h"
+#include "components/utils/oled/oled.h"
 
 extern "C"
 {
@@ -50,6 +52,13 @@ void HalEsp32::init()
 
     // 蜂鸣器
     _components.buzzer = std::make_unique<BuzzerArduino>();
+
+    // OLED
+    oled_init();
+
+    // 显示屏
+    _components.display = std::make_unique<DisplayOLED>();
+    _components.display->init();
 
     hal_test();
 }
@@ -106,6 +115,35 @@ void HalEsp32::i2c_init()
         }
     }
     mclog::tagInfo(tag, "found {} device", device_num);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    OLED                                    */
+/* -------------------------------------------------------------------------- */
+
+static Oled *_oled = nullptr;
+
+// 暴露给 Display 组件用
+Oled *__get_oled()
+{
+    return _oled;
+}
+
+void HalEsp32::oled_init()
+{
+    const std::string tag = "oled";
+    mclog::tagInfo(tag, "init");
+
+    if (_oled != nullptr)
+    {
+        mclog::tagError(tag, "already inited");
+        return;
+    }
+
+    _oled = new Oled;
+    _oled->init();
+
+    mclog::tagInfo(tag, "size: {} x {}", _oled->width(), _oled->height());
 }
 
 /* -------------------------------------------------------------------------- */

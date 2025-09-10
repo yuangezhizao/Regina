@@ -19,9 +19,10 @@
 void HalEsp32::hal_test()
 {
     /* ---------------------------------- Test ---------------------------------- */
-    imu_test();
+    // imu_test();
     // button_test();
     // buzzer_test();
+    oled_test();
 }
 
 void HalEsp32::imu_test()
@@ -90,5 +91,38 @@ void HalEsp32::buzzer_test()
             interval -= 20;
             HAL::SysCtrl().feedTheDog();
         }
+    }
+}
+
+void HalEsp32::oled_test()
+{
+
+    while (1)
+    {
+        // mclog::info("www");
+        // HAL::Display().GetDisplay()->fillScreen(TFT_WHITE);
+        // HAL::Display().GetDisplay()->setTextColor(TFT_BLACK, TFT_WHITE);
+        // HAL::Display().GetDisplay()->drawString("www", 0, 0);
+        // delay(1000);
+        // mclog::info("bbb");
+        // HAL::Display().GetDisplay()->fillScreen(TFT_BLACK);
+        // HAL::Display().GetDisplay()->setTextColor(TFT_WHITE, TFT_BLACK);
+        // HAL::Display().GetDisplay()->drawString("bbb", 0, 0);
+        // delay(1000);
+
+        mclog::info("www");
+        HAL::Display().GetCanvas()->fillScreen(TFT_WHITE);
+        HAL::Display().GetCanvas()->setTextColor(TFT_BLACK, TFT_WHITE);
+        HAL::Display().GetCanvas()->drawString("www", 0, 0);
+        HAL::Display().GetCanvas()->pushSprite(0, 0);
+        delay(1000);
+        mclog::info("bbb");
+        HAL::Display().GetCanvas()->fillScreen(TFT_BLACK);
+        HAL::Display().GetCanvas()->setTextColor(TFT_WHITE, TFT_BLACK);
+        HAL::Display().GetCanvas()->drawString("bbb", 0, 0);
+        HAL::Display().GetCanvas()->pushSprite(0, 0);
+        delay(1000);
+
+        HAL::SysCtrl().feedTheDog();
     }
 }

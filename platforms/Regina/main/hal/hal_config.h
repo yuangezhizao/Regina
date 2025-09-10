@@ -29,5 +29,14 @@
 // Buzzer
 #define HAL_PIN_BUZZ_CTRL 22
 
+// OLED
+#define HAL_SCREEN_WIDTH 128
+#define HAL_SCREEN_HEIGHT 64
+#define HAL_PIN_OLED_CS 9
+#define HAL_PIN_OLED_DC 18
+#define HAL_PIN_OLED_RST 19
+#define HAL_PIN_OLED_SDA 20
+#define HAL_PIN_OLED_SCL 21
+
 // WDT
 #define HAL_WATCH_DOG_TIMEOUT_S 6

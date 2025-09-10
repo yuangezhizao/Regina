@@ -24,10 +24,12 @@ public:
 private:
     void i2c_init();
     void fs_init();
+    void oled_init();
 
     // 调驱动用
     void hal_test();
     void imu_test();
     void button_test();
     void buzzer_test();
+    void oled_test();
 };
