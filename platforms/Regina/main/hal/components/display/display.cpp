@@ -15,7 +15,7 @@
 #include <LovyanGFX.hpp>
 #include <mooncake_log.h>
 
-Oled *__get_oled();
+// Oled *__get_oled();
 
 static const char *_tag = "display";
 
@@ -24,7 +24,19 @@ void DisplayOLED::init()
     mclog::tagInfo(_tag, "init");
 
     // 1. display
-    _lgfx_data.display = __get_oled();
+    // _lgfx_data.display = __get_oled();
+
+    if (_lgfx_data.display != nullptr)
+    {
+        mclog::tagError(_tag, "already inited");
+        return;
+    }
+
+    _lgfx_data.display = new Oled;
+    _lgfx_data.display->init();
+
+    mclog::tagInfo(_tag, "size: {} x {}", _lgfx_data.display->width(), _lgfx_data.display->height());
+
     mclog::tagInfo(_tag, "display ptr = {}", (void *)_lgfx_data.display);
     mclog::tagInfo(_tag, "panel ptr = {}", (void *)_lgfx_data.display->getPanel());
 
