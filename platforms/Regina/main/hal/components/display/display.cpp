@@ -9,7 +9,6 @@
  *
  */
 #include "display.h"
-#include "../../hal_config.h"
 #include "../utils/oled/oled.h"
 // #include <cstdint>
 #include <LovyanGFX.hpp>

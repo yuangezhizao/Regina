@@ -12,7 +12,6 @@
 // https://github.com/arduino-libraries/Arduino_BMI270_BMM150/blob/master/src/BMI270.cpp
 #include "imu.h"
 #include "../../hal_config.h"
-#include "../utils/BMI270-Sensor-API/bmi270.h"
 #include <esp_timer.h>
 #include <driver/i2c.h>
 #include <mooncake_log.h>

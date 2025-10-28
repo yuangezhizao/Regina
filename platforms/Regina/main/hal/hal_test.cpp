@@ -8,11 +8,9 @@
  * @copyright Copyright (c) 2024
  *
  */
-#include "esp32-hal-gpio.h"
 #include "esp32-hal.h"
 #include "hal/hal.h"
 #include "hal_esp32.h"
-#include "hal_config.h"
 #include <mooncake_log.h>
 #include <Arduino.h>
 
@@ -96,6 +94,7 @@ void HalEsp32::buzzer_test()
 
 void HalEsp32::oled_test()
 {
+    static int i = 0;
 
     while (1)
     {
@@ -110,18 +109,33 @@ void HalEsp32::oled_test()
         // HAL::Display().GetDisplay()->drawString("bbb", 0, 0);
         // delay(1000);
 
-        mclog::info("www");
-        HAL::Display().GetCanvas()->fillScreen(TFT_WHITE);
-        HAL::Display().GetCanvas()->setTextColor(TFT_BLACK, TFT_WHITE);
-        HAL::Display().GetCanvas()->drawString("www", 0, 0);
-        HAL::Display().GetCanvas()->pushSprite(0, 0);
-        delay(1000);
-        mclog::info("bbb");
+        // mclog::info("www");
+        // HAL::Display().GetCanvas()->fillScreen(TFT_WHITE);
+        // HAL::Display().GetCanvas()->setTextColor(TFT_BLACK, TFT_WHITE);
+        // HAL::Display().GetCanvas()->drawString("www", 0, 0);
+        // // HAL::Display().GetCanvas()->pushSprite(0, 0);
+        // HAL::Display().canvasUpdate();
+        // delay(1000);
+        // mclog::info("bbb");
+        // HAL::Display().GetCanvas()->fillScreen(TFT_BLACK);
+        // HAL::Display().GetCanvas()->setTextColor(TFT_WHITE, TFT_BLACK);
+        // HAL::Display().GetCanvas()->drawString("bbb", 0, 0);
+        // // HAL::Display().GetCanvas()->pushSprite(0, 0);
+        // HAL::Display().canvasUpdate();
+        // delay(1000);
+
+        // mclog::info("Count: {}", i);
+        // HAL::Display().GetDisplay()->printf("%d ", i);
+        // i++;
+        // delay(1000);
+
         HAL::Display().GetCanvas()->fillScreen(TFT_BLACK);
         HAL::Display().GetCanvas()->setTextColor(TFT_WHITE, TFT_BLACK);
-        HAL::Display().GetCanvas()->drawString("bbb", 0, 0);
-        HAL::Display().GetCanvas()->pushSprite(0, 0);
-        delay(1000);
+        HAL::Display().GetCanvas()->drawString("Frame: ", 0, 20);
+        HAL::Display().GetCanvas()->drawNumber(i++, 60, 20);
+        HAL::Display().RenderFpsPanel();
+        HAL::Display().canvasUpdate();
+        delay(1);
 
         HAL::SysCtrl().feedTheDog();
     }
