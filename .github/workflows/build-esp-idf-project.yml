@@ -24,7 +24,7 @@ jobs:
         os:
           - ubuntu-latest
         esp_idf_version:
-          - release-v5.5
+          - v5.5.1
           - release-v5.4
           - release-v5.3
         experimental:
