@@ -32,4 +32,11 @@ private:
     void button_test();
     void buzzer_test();
     void oled_test();
+
+    // 串口 + OLED 屏幕
+    void hal_test_with_ui();
+    void imu_test_with_ui();
+    void button_test_with_ui();
+    void buzzer_test_with_ui();
+    void oled_test_with_ui();
 };

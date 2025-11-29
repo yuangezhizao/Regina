@@ -20,7 +20,7 @@ void HalEsp32::hal_test()
     // imu_test();
     // button_test();
     // buzzer_test();
-    oled_test();
+    // oled_test();
 }
 
 void HalEsp32::imu_test()

@@ -61,6 +61,8 @@ void HalEsp32::init()
     _components.display->init();
 
     hal_test();
+
+    hal_test_with_ui();
 }
 
 /* -------------------------------------------------------------------------- */
