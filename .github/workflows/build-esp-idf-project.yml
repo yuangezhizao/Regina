@@ -24,7 +24,7 @@ jobs:
         os:
           - ubuntu-latest
         esp_idf_version:
-          - v5.5.1
+          - release-v5.5
           - release-v5.4
           - release-v5.3
         experimental:
@@ -73,9 +73,9 @@ jobs:
           target: ${{ env.ESP_IDF_TARGET }}
           path: ${{ env.ESP_IDF_PROJECT_PATH }}
           command: |
-            esptool.py image_info ${{ env.ARTIFACT_BOOTLOADER_BIN_PATH }} --version 2
+            python -m esptool image_info ${{ env.ARTIFACT_BOOTLOADER_BIN_PATH }} --version 2
             echo -e
-            esptool.py image_info ${{ env.ARTIFACT_APP_BIN_PATH }} --version 2
+            python -m esptool image_info ${{ env.ARTIFACT_APP_BIN_PATH }} --version 2
 
       - name: 📦 Upload build artifacts (include binary images)
         uses: actions/upload-artifact@v4
