@@ -153,3 +153,13 @@ hal_components::BleBase &HAL::HalBase::Ble()
     }
     return *_components.ble.get();
 }
+
+hal_components::MicBase &HAL::HalBase::Mic()
+{
+    if (!_components.mic)
+    {
+        mclog::tagWarn(_tag, "getting null mic component");
+        _components.mic = std::make_unique<hal_components::MicBase>();
+    }
+    return *_components.mic.get();
+}

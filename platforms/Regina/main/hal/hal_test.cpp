@@ -21,6 +21,7 @@ void HalEsp32::hal_test()
     // button_test();
     // buzzer_test();
     // oled_test();
+    mic_test();
 }
 
 void HalEsp32::imu_test()
@@ -137,6 +138,38 @@ void HalEsp32::oled_test()
         HAL::Display().canvasUpdate();
         delay(1);
 
+        HAL::SysCtrl().feedTheDog();
+    }
+}
+
+void HalEsp32::mic_test()
+{
+    HAL::Mic().start();
+
+    while (1)
+    {
+        // // printf("%d\n", analogRead(HAL_PIN_MIC));
+        // // delay(20);
+
+        // // if (analogContinuousRead(&result, 0))
+        // // {
+        // //     analogContinuousStop();
+        // //     printf("m:%d\n", result[0].avg_read_raw);
+        // //     analogContinuousStart();
+        // // }
+        // // delay(5);
+
+        // if (_sample_cycled_flag)
+        // {
+        //     _sample_cycled_flag = false;
+        //     analogContinuousStop();
+        //     _sample_buffer->peekAll([](const int& sample) { printf("m:%d\n", sample); });
+        //     analogContinuousStart();
+        // }
+
+        HAL::Mic().printAllSamples();
+
+        delay(20);
         HAL::SysCtrl().feedTheDog();
     }
 }

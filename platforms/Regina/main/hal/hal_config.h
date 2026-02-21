@@ -38,5 +38,8 @@
 #define HAL_PIN_OLED_SDA 20
 #define HAL_PIN_OLED_SCL 21
 
+// Mic
+#define HAL_PIN_MIC 4
+
 // WDT
 #define HAL_WATCH_DOG_TIMEOUT_S 6

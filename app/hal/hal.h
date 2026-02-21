@@ -23,6 +23,7 @@
 #include "components/battery_monitor.h"
 #include "components/button.h"
 #include "components/ble.h"
+#include "components/mic.h"
 
 /**
  * @brief 硬件抽象层，提供统一的硬件、平台相关行为接口
@@ -78,6 +79,7 @@ namespace HAL
         hal_components::BatteryMonitorBase &BatteryMonitor();
         hal_components::ButtonBase &Button();
         hal_components::BleBase &Ble();
+        hal_components::MicBase &Mic();
 
     protected:
         // 组件实例管理
@@ -92,6 +94,7 @@ namespace HAL
             std::unique_ptr<hal_components::BatteryMonitorBase> battery_monitor;
             std::unique_ptr<hal_components::ButtonBase> button;
             std::unique_ptr<hal_components::BleBase> ble;
+            std::unique_ptr<hal_components::MicBase> mic;
         };
         Components_t _components;
     };
@@ -173,6 +176,10 @@ namespace HAL
     inline hal_components::BleBase &Ble()
     {
         return Get().Ble();
+    }
+    inline hal_components::MicBase &Mic()
+    {
+        return Get().Mic();
     }
 
 } // namespace HAL

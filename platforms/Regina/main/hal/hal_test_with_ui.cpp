@@ -21,7 +21,7 @@ void HalEsp32::hal_test_with_ui()
     // imu_test_with_ui();
     // button_test_with_ui();
     // buzzer_test_with_ui();
-    oled_test_with_ui();
+    // oled_test_with_ui();
 }
 
 void HalEsp32::imu_test_with_ui()

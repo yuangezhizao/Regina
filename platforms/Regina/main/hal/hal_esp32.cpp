@@ -16,6 +16,7 @@
 #include "components/buzzer/buzzer.h"
 #include "components/display/display.h"
 // #include "components/utils/oled/oled.h"
+#include "components/mic/mic.h"
 
 extern "C"
 {
@@ -59,6 +60,10 @@ void HalEsp32::init()
     // 显示屏
     _components.display = std::make_unique<DisplayOLED>();
     _components.display->init();
+
+    // 麦克风
+    _components.mic = std::make_unique<MicArduino>();
+    _components.mic->init();
 
     hal_test();
 

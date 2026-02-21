@@ -32,6 +32,7 @@ private:
     void button_test();
     void buzzer_test();
     void oled_test();
+    void mic_test();
 
     // 串口 + OLED 屏幕
     void hal_test_with_ui();
