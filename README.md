@@ -194,7 +194,7 @@ unpacked_data = struct.unpack('fff', data)
 
 ## 硬件
 
-**立创链接 ->** [点我 :)](https://oshwhub.com/eedadada/phalange)
+**立创链接 ->** [点我 :)](https://oshwhub.com/eda_rgprdhwej/phalange)
 
 板厚1MM
 
