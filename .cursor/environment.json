@@ -1,0 +1,8 @@
+{
+  "name": "Regina (ESP-IDF / ESP32-C6)",
+  "user": "root",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "install": "bash .cursor/install.sh"
+}
