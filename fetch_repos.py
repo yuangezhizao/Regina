@@ -4,6 +4,10 @@ import subprocess
 
 
 def clone_or_update_repo(repo_url, path, branch):
+    if os.path.isdir(os.path.join(path, '.git')):
+        print(f'Skip (already cloned): {path}')
+        return
+
     command = []
     command.append('git')
     command.append('clone')
@@ -15,7 +19,7 @@ def clone_or_update_repo(repo_url, path, branch):
     command.append(repo_url)
     command.append(path)
 
-    subprocess.run(command)
+    subprocess.run(command, check=True)
 
 
 def main():
