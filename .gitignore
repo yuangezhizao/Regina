@@ -33,3 +33,14 @@
 
 # ESP-IDF Components
 dependencies
+
+# ESP-IDF build output & generated config
+/build/
+platforms/*/build/
+platforms/Regina/sdkconfig
+platforms/Regina/sdkconfig.old
+platforms/Regina/dependencies.lock
+platforms/Regina/managed_components/
+
+# Fetched dependency component (see repos.json / fetch_repos.py)
+platforms/Regina/main/hal/components/utils/BMI270-Sensor-API/
